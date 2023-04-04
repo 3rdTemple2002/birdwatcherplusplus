@@ -39,8 +39,23 @@ class transfer():
             if os.path.exists(pZip):
                 os.remove(pZip)
             
-            
-            
+    def sendMessage(pSubject, pFrom, pTo, pContent, host, username, password):       
+
+        msg = EmailMessage() # Erstellung der E-Mail
+        msg['Subject'] = pSubject #Hinzufügen Betreff
+        msg['From'] = pFrom # Hinzufügen Absender
+        msg['To'] = pTo # Hinzufügen Empfänger
+        msg.set_content(pContent) # Inhalt der Mail
+          
+        try:
+            s = smtplib.SMTP(host) # SMTP-URL
+            s.starttls() # Start des TLS-Verschlüsselungsprotokolls
+            s.login(username, password) # Anmeldung mit Benutzernamen und Passwort
+            s.send_message(msg) # Versenden der Nachricht
+            s.quit() # Schließen des SMTP-Vorgangs
+        except Exception as e:
+            logging.error(e) # Logging potentieller Fehlermeldung
+
             
             
 

@@ -34,19 +34,22 @@ class Process():
         folder.createFolder(path3) # Erstellung des Orners an Pfad 3
         folder.createFolder(pTransfer) # Erstellung des Hauptverzeichnis für den Transfer
              
+        if(folder.get_size(path1) < 5000000000):
 
-        camera.takePhoto(pFile) # Aufnahme und Speicherung unter dem Dateipfad
-                
-        folder.transfer(pFile, pTransfer) # Kopieren der Aufnahme in den Transferordner
+            camera.takePhoto(pFile) # Aufnahme und Speicherung unter dem Dateipfad
+                    
+            folder.transfer(pFile, pTransfer) # Kopieren der Aufnahme in den Transferordner
 
-        folder.chop_dir(pTransfer,20000000)
+            folder.chop_dir(pTransfer,20000000)
 
-        transfer_sub_dirs = os.listdir(pTransfer)
-        transfer_sub_dirs.sort()
-        #print(transfer_sub_dirs)
-        for obj in transfer_sub_dirs:
-            transfer.sendMail(pSubject, pFrom, pTo, pContent, pTransfer + '/' + obj, filename, host, username, password) # Versand der Datei per E-Mail in einer .zip-Datei
-
+            transfer_sub_dirs = os.listdir(pTransfer)
+            transfer_sub_dirs.sort()
+            #print(transfer_sub_dirs)
+            for obj in transfer_sub_dirs:
+                transfer.sendMail(pSubject, pFrom, pTo, pContent, pTransfer + '/' + obj, filename, host, username, password) # Versand der Datei per E-Mail in einer .zip-Datei
+        else:
+            
+            transfer.sendMessage('Speicher voll', pFrom, pTo, 'Der Speicher muss geleert werden.', host, username, password)
 
                 
        
