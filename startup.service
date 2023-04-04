@@ -1,0 +1,16 @@
+[Unit]
+Description=Autostart Aufnahme 
+# Beschreibung des Programmes
+After=multi-user.target 
+# Ausführen nach (sobald alle Nichtgrafikelemente geladen sind)
+Requires=network-online.target 
+# Benoetigt (aktive Internetverbindung)
+
+[Service]
+Type=idle
+ExecStart=python /home/pi/Desktop/birdwatcherpp/process.py 
+# Ausfuehren der Datei (process.py)
+
+[Install]
+WantedBy=multi-user.target 
+# Ausführen nach (sobald alle Nichtgrafikelemente geladen sind)
