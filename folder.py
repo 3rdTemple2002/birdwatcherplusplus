@@ -43,7 +43,8 @@ class folder:
             shutil.make_archive(pTransfer,'zip', pTransfer) # Komprimierung, Speicherung des .zip an dem gleichen Ort
         except Exception as e:
             logging.error(e) #Logging potentieller Fehlermeldung
-            
+    
+    # berechnet die Göße eines Ordners samt Dateien und Unterordnern in Bytes
     def get_size(start_path = '.'):
         total_size = 0
         for dirpath, dirnames, filenames in os.walk(start_path):
@@ -55,6 +56,7 @@ class folder:
 
         return total_size
 
+    #verschiebt alle Dateien (keine Unterordner) eines Ordners
     def move_all_files(root_dir, d_dir):
         try:
             folder.createFolder(d_dir)

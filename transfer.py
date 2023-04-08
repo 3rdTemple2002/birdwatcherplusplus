@@ -21,7 +21,7 @@ class transfer():
             with open(pZip, 'rb') as fp: # Öffnen der zu versendenden Datei
                 file_data = fp.read()
                 maintype, _, subtype = (mimetypes.guess_type(pZip)[0] or 'application/octet-stream').partition("/") # Auslesen des MIME Types (Dateityp)
-                msg.add_attachment(file_data, maintype=maintype, subtype=subtype, filename=filename) # Anhängen der Datei an die E-Mail
+                msg.add_attachment(file_data, maintype=maintype, subtype=subtype, filename=pZip) # Anhängen der Datei an die E-Mail
                 
         except Exception as e:
             logging.error(e) # Logging potentieller Fehlermeldung
@@ -55,7 +55,4 @@ class transfer():
             s.quit() # Schließen des SMTP-Vorgangs
         except Exception as e:
             logging.error(e) # Logging potentieller Fehlermeldung
-
-            
-            
 

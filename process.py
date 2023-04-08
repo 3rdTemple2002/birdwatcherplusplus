@@ -8,7 +8,7 @@ class Process():
         
     class __init__(): # Ausführung beim Programmaufruf
                                                                                                         # DD-MM-YYYY_HH-MM-SS
-        time = datetime.now(  ).strftime("%d-%m-%Y_%H-%M-%S") # Erstellung der aktuell Uhrzeit im Format "03-10-2022_20-13-23"
+        time = datetime.now(  ).strftime("%Y-%m-%d_%H-%M-%S") # Erstellung der aktuell Uhrzeit im Format "03-10-2022_20-13-23"
         year = datetime.now().strftime("%Y") # Erstellung des Jahres als Text
         month = datetime.now().strftime("%m-%Y") # Erstellung des Monates und Jahres als Text
         path1 = '/home/pi/Desktop/Birdwatcher_pp' # Ordnerpfad 1
@@ -50,13 +50,4 @@ class Process():
         else:
             
             transfer.sendMessage('Speicher voll', pFrom, pTo, 'Der Speicher muss geleert werden.', host, username, password)
-
-                
-       
-            
-        
-
-        
-        
-
 
